@@ -1,0 +1,486 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    animation: fadeIn 1s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.dark-mode {
+    background-color: #1e1e1e;
+    color: #f4f4f4;
+}
+
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('header-bg.jpg') no-repeat center center fixed;
+    z-index: -1;
+    transform: translateY(0);
+    background-size: cover;
+    background-attachment: fixed;
+    height: 300px;
+}
+
+/* Header */
+header {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+    padding: 100px 20px;
+    color: white;
+    overflow: hidden;
+}
+header h1:hover {
+    color: #f39c12;
+    transition: 0.3s;
+}
+header h1, header p {
+    position: relative;
+    z-index: 2;
+}
+
+#typed-text {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    header {
+        padding: 80px 15px;
+    }
+    .parallax-bg {
+        background-attachment: scroll;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+
+/* Social Links */
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    text-decoration: none;
+    color: white;
+    margin: 0 10px;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    color: #f39c12;
+    transform: scale(1.1);
+}
+.social-links a:hover, .project-btn:hover, .hire-me-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Sections */
+section {
+    width: 80%;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-in-out;
+}
+
+/* Show animation */
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Kontainer Proyek */
+.project-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Card Proyek */
+.project {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efek Hover */
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Tombol GitHub & Live Demo */
+.project a {
+    display: inline-block;
+    margin: 10px 5px;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/* Tombol GitHub */
+.project-btn {
+    background: #333;
+    color: white;
+}
+
+.project-btn:hover {
+    background: #222;
+}
+
+/* Tombol Live Demo */
+.live-demo-btn {
+    background: #28a745;
+    color: white;
+}
+
+.live-demo-btn:hover {
+    background: #218838;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .project-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .project {
+        width: 90%;
+    }
+}
+
+/* Animasi Hover untuk Proyek */
+.project-container a {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(135deg, #4A90E2, #904E95);
+    padding: 15px 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efek saat di-hover */
+.project-container a:hover {
+    transform: scale(1.1);  /* Efek Zoom */
+    box-shadow: 0 0 15px rgba(74, 144, 226, 0.8); /* Glow Effect */
+}
+
+/* Efek Glow Border */
+.project-container a::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff);
+    border-radius: 12px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Munculkan efek glow saat hover */
+.project-container a:hover::before {
+    opacity: 1;
+}
+
+
+.project-btn {
+    display: inline-block;
+    background: #3498db;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.project-btn:hover {
+    background: #2980b9;
+    transform: translateY(-5px);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #2c3e50;
+    color: white;
+    margin-top: 30px;
+}
+
+/* Contact Section */
+#contact p a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#contact p a:hover {
+    text-decoration: underline;
+}
+
+.progress {
+    background: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 10px;
+    width: 100%;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #3498db;
+}
+
+.testimonial {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    display: none;
+}
+
+.back-to-top.show {
+    display: block;
+}
+
+#backToTop:hover {
+    background: #2980b9;
+}
+
+/* Timeline Container */
+.timeline {
+    position: relative;
+    margin: 50px auto;
+    padding: 20px 0;
+    width: 80%;
+}
+
+/* Garis Tengah */
+.timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 3px;
+    height: 100%;
+    background: #3498db;
+    transform: translateX(-50%);
+}
+
+/* Item dalam Timeline */
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Posisi Kiri & Kanan */
+.timeline-item:nth-child(odd) {
+    left: 0;
+    text-align: right;
+    padding-right: 60px;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+    text-align: left;
+    padding-left: 60px;
+}
+
+/* Ikon dalam Timeline */
+.timeline-icon {
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    background: #3498db;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-50%);
+}
+
+/* Ikon di kiri */
+.timeline-icon.left {
+    left: calc(50% - 75px); /* Posisikan ikon di kiri garis */
+}
+
+/* Ikon di kanan */
+.timeline-icon.right {
+    left: calc(50% + 25px); /* Posisikan ikon di kanan garis */
+}
+
+/* Konten dalam Timeline */
+.timeline-content {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+}
+
+/* Judul */
+.timeline-content h3 {
+    margin: 0;
+    color: #3498db;
+}
+
+/* Tanggal */
+.date {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: gray;
+}
+
+/* Responsif untuk layar kecil */
+@media screen and (max-width: 768px) {
+    .timeline::before {
+        left: 20px;
+    }
+    .timeline-item {
+        width: 100%;
+        padding-left: 50px;
+        text-align: left;
+    }
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+    .timeline-icon {
+        left: 10px;
+    }
+}
+.timeline-item:hover .timeline-content {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.timeline-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-in-out;
+}
+
+.timeline-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.timeline-icon:hover {
+    background: #2980b9; /* Warna lebih gelap saat hover */
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+}
+.timeline::before {
+    background: linear-gradient(to bottom, #3498db, #8e44ad);
+}
+.timeline-icon::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.timeline-icon:hover::after {
+    opacity: 1;
+}
+
+.typed-container {
+    text-align: center; /* Pastikan teks tetap di tengah */
+    width: 100%; 
+}
+button:hover, a:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+
+
+
