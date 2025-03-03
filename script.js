@@ -98,19 +98,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const darkModeToggle = document.getElementById("darkModeToggle");
     const body = document.body;
 
-    // Cek apakah pengguna pernah mengaktifkan dark mode sebelumnya
+    function updateButton() {
+        if (body.classList.contains("dark-mode")) {
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+        } else {
+            darkModeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+        }
+    }
+
+    // Cek apakah dark mode aktif dari localStorage
     if (localStorage.getItem("darkMode") === "enabled") {
         body.classList.add("dark-mode");
     }
+    updateButton(); // Update teks dan ikon saat halaman dimuat
 
     darkModeToggle.addEventListener("click", function () {
         body.classList.toggle("dark-mode");
-
-        // Simpan preferensi pengguna
-        if (body.classList.contains("dark-mode")) {
-            localStorage.setItem("darkMode", "enabled");
-        } else {
-            localStorage.setItem("darkMode", "disabled");
-        }
+        localStorage.setItem("darkMode", body.classList.contains("dark-mode") ? "enabled" : "disabled");
+        updateButton();
     });
 });
+
