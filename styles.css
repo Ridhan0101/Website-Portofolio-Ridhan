@@ -1,20 +1,92 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-    animation: fadeIn 1s ease-in-out;
-}
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-.dark-mode {
-    background-color: #1e1e1e;
-    color: #f4f4f4;
-}
+    /* General Styles */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        color: #333;
+        animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    /* Dark Mode Styles */
+    body.dark-mode {
+        background-color: #1e1e1e;
+        color: #ffffff;
+    }
+    .dark-mode header {
+        background-color: #2c2c2c;
+    }
+    .dark-mode a {
+        color: #61dafb;
+    }
+    .dark-mode-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000; 
+        background: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background 0.3s ease;
+    }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+
+        .dark-mode header {
+            background-color: #2c2c2c;
+        }
+
+        .dark-mode a {
+            color: #61dafb;
+        }
+
+        /* Pastikan input dan textarea berubah warna saat Dark Mode aktif */
+        input, textarea {
+            background-color: #fff;
+            color: #000;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            width: calc(100% - 20px);
+            display: block;
+            margin: 10px auto;
+        }
+
+        /* Dark mode untuk input & textarea */
+        .dark-mode input,
+        .dark-mode textarea {
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #555;
+        }
+
+        /* Placeholder warna di dark mode */
+        .dark-mode input::placeholder,
+        .dark-mode textarea::placeholder {
+            color: #aaa;
+        }
+        body.dark-mode .project-container {
+            background-color: #222; /* Warna lebih gelap agar kontras */
+            color: #fff !important; /* Paksa warna putih agar lebih terbaca */
+        }
+        
+        body.dark-mode .project-container h3,
+        body.dark-mode .project-container p {
+            color: #ffffff !important;
+            opacity: 1 !important; /* Pastikan teks tidak transparan */
+        }
+        
 
 .parallax-bg {
     position: absolute;
@@ -130,7 +202,15 @@ section {
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.6s ease-in-out;
+    background-color: #ffffff;
+    color: #000000;
 }
+/* Perbaiki dark mode untuk section */
+body.dark-mode section {
+    background-color: #222;
+    color: #ffffff;
+}
+
 
 /* Show animation */
 section.show {
@@ -148,14 +228,23 @@ section.show {
 
 /* Card Proyek */
 .project {
-    background: #f8f9fa;
+    background-color: #ffffff; 
+    color: #000000;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 300px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 1;
 }
+.dark-mode .project {
+    background-color: #2a2a2a;
+    color: #ffffff;
+}
+
+
+
 
 /* Efek Hover */
 .project:hover {
@@ -163,7 +252,7 @@ section.show {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Tombol GitHub & Live Demo */
+/* Tombol GitHub 
 .project a {
     display: inline-block;
     margin: 10px 5px;
@@ -184,15 +273,7 @@ section.show {
     background: #222;
 }
 
-/* Tombol Live Demo */
-.live-demo-btn {
-    background: #28a745;
-    color: white;
-}
 
-.live-demo-btn:hover {
-    background: #218838;
-}
 
 /* Responsif */
 @media (max-width: 768px) {
@@ -328,15 +409,12 @@ footer {
     background: #2980b9;
 }
 
-/* Timeline Container */
 .timeline {
     position: relative;
     margin: 50px auto;
     padding: 20px 0;
     width: 80%;
 }
-
-/* Garis Tengah */
 .timeline::before {
     content: "";
     position: absolute;
@@ -344,32 +422,32 @@ footer {
     left: 50%;
     width: 3px;
     height: 100%;
-    background: #3498db;
+    background: linear-gradient(to bottom, #3498db, #8e44ad);
     transform: translateX(-50%);
 }
-
-/* Item dalam Timeline */
 .timeline-item {
     position: relative;
     width: 50%;
     padding: 20px;
     box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-in-out;
 }
-
-/* Posisi Kiri & Kanan */
+.timeline-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 .timeline-item:nth-child(odd) {
     left: 0;
     text-align: right;
     padding-right: 60px;
 }
-
 .timeline-item:nth-child(even) {
     left: 50%;
     text-align: left;
     padding-left: 60px;
 }
-
-/* Ikon dalam Timeline */
 .timeline-icon {
     position: absolute;
     top: 50%;
@@ -384,80 +462,47 @@ footer {
     font-size: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     transform: translateY(-50%);
+    transition: all 0.3s ease-in-out;
 }
-
-/* Ikon di kiri */
 .timeline-icon.left {
-    left: calc(50% - 75px); /* Posisikan ikon di kiri garis */
+    left: calc(50% - 75px);
 }
-
-/* Ikon di kanan */
 .timeline-icon.right {
-    left: calc(50% + 25px); /* Posisikan ikon di kanan garis */
+    left: calc(50% + 25px);
 }
-
-/* Konten dalam Timeline */
+.timeline-icon:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
 .timeline-content {
     background: white;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
+    transition: background 0.3s, transform 0.3s ease-in-out;
     position: relative;
 }
-
-/* Judul */
+.dark-mode .timeline-content {
+    background: #1e1e1e;
+    color: white;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+}
 .timeline-content h3 {
     margin: 0;
     color: #3498db;
 }
-
-/* Tanggal */
 .date {
     display: block;
     margin-top: 10px;
     font-size: 14px;
     color: gray;
 }
-
-/* Responsif untuk layar kecil */
-@media screen and (max-width: 768px) {
-    .timeline::before {
-        left: 20px;
-    }
-    .timeline-item {
-        width: 100%;
-        padding-left: 50px;
-        text-align: left;
-    }
-    .timeline-item:nth-child(even) {
-        left: 0;
-    }
-    .timeline-icon {
-        left: 10px;
-    }
+.dark-mode .date {
+    color: lightgray;
 }
 .timeline-item:hover .timeline-content {
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-.timeline-item {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease-in-out;
-}
-
-.timeline-item.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-.timeline-icon:hover {
-    background: #2980b9; /* Warna lebih gelap saat hover */
-    transform: scale(1.1);
-    transition: all 0.3s ease-in-out;
-}
-.timeline::before {
-    background: linear-gradient(to bottom, #3498db, #8e44ad);
 }
 .timeline-icon::after {
     content: attr(data-tooltip);
@@ -474,9 +519,30 @@ footer {
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
 }
-
 .timeline-icon:hover::after {
     opacity: 1;
+}
+@media screen and (max-width: 768px) {
+    .timeline::before {
+        left: 20px;
+    }
+    .timeline-item {
+        width: 100%;
+        padding-left: 50px;
+        text-align: left;
+    }
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+    .timeline-icon {
+        left: 10px;
+    }
+}
+.dark-mode .timeline::before {
+    background: linear-gradient(to bottom, #8e44ad, #3498db);
+}
+.dark-mode .timeline-icon {
+    background: #8e44ad;
 }
 
 .typed-container {
