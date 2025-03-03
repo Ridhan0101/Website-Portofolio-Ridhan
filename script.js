@@ -15,23 +15,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Back to Top Button
     const backToTop = document.getElementById("backToTop");
-
-    window.addEventListener("scroll", function () {
-        backToTop.style.display = window.scrollY > 300 ? "block" : "none";
-        backToTop.classList.toggle("show", window.scrollY > 300);
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 200) {
+            backToTop.style.display = "block";
+        } else {
+            backToTop.style.display = "none";
+        }
     });
-
-    backToTop.addEventListener("click", function () {
+    backToTop.addEventListener("click", () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
-
-    backToTop.addEventListener("mouseenter", function () {
-        backToTop.style.transform = "scale(1.2)";
-    });
-
-    backToTop.addEventListener("mouseleave", function () {
-        backToTop.style.transform = "scale(1)";
-    });
+   
 
     // Timeline Reveal on Scroll
     const timelineItems = document.querySelectorAll(".timeline-item");
@@ -118,4 +112,8 @@ document.addEventListener("DOMContentLoaded", function () {
         updateButton();
     });
 });
+document.getElementById("backToTop").addEventListener("click", function() {
+    window.scrollTo({top: 0, behavior: "smooth"});
+});
+
 
