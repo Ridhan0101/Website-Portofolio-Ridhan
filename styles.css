@@ -29,7 +29,11 @@ body {
     background-attachment: fixed;
     height: 300px;
 }
-
+@media (max-width: 768px) {
+    .parallax-bg {
+        background-attachment: scroll;
+    }
+}
 /* Header */
 header {
     background: #2c3e50;
@@ -86,14 +90,16 @@ html {
 
 .profile-img {
     width: 150px;
-    height: 150px;
-    border-radius: 50%;
+    height: auto;
+    border-radius: 80%;
     margin-top: 10px;
+    max-width: 100%;
 }
 
 /* Social Links */
 .social-links {
     margin-top: 10px;
+    margin: 0 10px;
 }
 
 .social-links a {

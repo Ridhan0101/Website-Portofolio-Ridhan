@@ -1,12 +1,10 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
+    // Reveal Sections on Scroll
     const sections = document.querySelectorAll("section");
 
     function revealSections() {
         sections.forEach(section => {
-            const sectionTop = section.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-
-            if (sectionTop < windowHeight - 100) {
+            if (section.getBoundingClientRect().top < window.innerHeight - 100) {
                 section.classList.add("show");
             }
         });
@@ -14,55 +12,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
     window.addEventListener("scroll", revealSections);
     revealSections();
-});
 
-function revealSections() {
-    sections.forEach(section => {
-        if (section.getBoundingClientRect().top < window.innerHeight - 100) {
-            section.classList.add("show");
-        }
-    });
-}
-document.addEventListener("scroll", revealSections);
-
-document.addEventListener("DOMContentLoaded", function() {
-    const body = document.body;
+    // Back to Top Button
     const backToTop = document.getElementById("backToTop");
 
-
-    window.addEventListener("scroll", function() {
-        if (window.scrollY > 300) {
-            backToTop.classList.add("show");
-        } else {
-            backToTop.classList.remove("show");
-        }
+    window.addEventListener("scroll", function () {
+        backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+        backToTop.classList.toggle("show", window.scrollY > 300);
     });
 
-    backToTop.addEventListener("click", function() {
+    backToTop.addEventListener("click", function () {
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
-    backToTop.addEventListener("mouseenter", function() {
+
+    backToTop.addEventListener("mouseenter", function () {
         backToTop.style.transform = "scale(1.2)";
     });
-    backToTop.addEventListener("mouseleave", function() {
+
+    backToTop.addEventListener("mouseleave", function () {
         backToTop.style.transform = "scale(1)";
     });
-    
-});
-window.onscroll = function() {
-    let button = document.getElementById("backToTop");
-    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-        button.style.display = "block";
-    } else {
-        button.style.display = "none";
-    }
-};
 
-document.getElementById("backToTop").onclick = function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-};
-
-document.addEventListener("DOMContentLoaded", function () {
+    // Timeline Reveal on Scroll
     const timelineItems = document.querySelectorAll(".timeline-item");
 
     function revealOnScroll() {
@@ -76,9 +47,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     window.addEventListener("scroll", revealOnScroll);
-    revealOnScroll(); // Panggil langsung agar elemen yang terlihat langsung muncul
-});
-document.addEventListener("DOMContentLoaded", function () {
+    revealOnScroll();
+
+    // Dynamic Date Display
     let dates = document.querySelectorAll(".date");
     let currentYear = new Date().getFullYear();
 
@@ -89,53 +60,37 @@ document.addEventListener("DOMContentLoaded", function () {
             date.innerHTML += ` (${yearsAgo} years ago)`;
         }
     });
-});
-document.addEventListener("DOMContentLoaded", function () {
-    // Efek Typed.js untuk teks dinamis
-    var typed = new Typed("#typed-text", {
-        strings: [
-            "Fresh Graduate Informatics Engineering",
-            "Web Developer &amp; Data Mining Enthusiast",
-            "Experienced in Laravel &amp; CodeIgniter",
-            "Skilled in Python (Streamlit, Flask)",
-            "Database Management: MySQL, Oracle, MongoDB",
-            "Data Mining: Apriori Algorithm &amp; ARIMA",
-            "Internship at PT Dirgantara Indonesia",
-            "HRD Staff at Fasilkom Science Community"
-        ],
-        typeSpeed: 40,
-        backSpeed: 30,
-        backDelay: 2000,
-        startDelay: 500,
-        loop: true
-    });
 
-    // Efek Parallax Scrolling
+    // Typed.js Effect
+    if (document.getElementById("typed-text")) {
+        new Typed("#typed-text", {
+            strings: [
+                "Fresh Graduate Informatics Engineering",
+                "Web Developer &amp; Data Mining Enthusiast",
+                "Experienced in Laravel &amp; CodeIgniter",
+                "Skilled in Python (Streamlit, Flask)",
+                "Database Management: MySQL, Oracle, MongoDB",
+                "Data Mining: Apriori Algorithm &amp; ARIMA",
+                "Internship at PT Dirgantara Indonesia",
+                "HRD Staff at Fasilkom Science Community"
+            ],
+            typeSpeed: 40,
+            backSpeed: 30,
+            backDelay: 2000,
+            startDelay: 500,
+            loop: true
+        });
+    }
+
+    // Parallax Scrolling Effect
     window.addEventListener("scroll", function () {
         let scrollPosition = window.scrollY;
-        document.querySelector(".parallax-bg").style.transform = "translateY(" + scrollPosition * 0.5 + "px)";
+        let parallaxBg = document.querySelector(".parallax-bg");
+        if (parallaxBg) {
+            parallaxBg.style.transform = "translateY(" + scrollPosition * 0.5 + "px)";
+        }
     });
-});
 
-AOS.init();
-self.addEventListener("install", (e) => {
-    e.waitUntil(
-        caches.open("portfolio-cache").then((cache) => {
-            return cache.addAll([
-                "/",
-                "/styles.css",
-                "/script.js",
-                "/foto_ridhan.jpg"
-            ]);
-        })
-    );
+    // Initialize AOS Library
+    AOS.init();
 });
-
-self.addEventListener("fetch", (e) => {
-    e.respondWith(
-        caches.match(e.request).then((response) => {
-            return response || fetch(e.request);
-        })
-    );
-});
-

@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="Muhammad Ridhan Khoirullah, Web Developer, Data Mining, Laravel, Python, CodeIgniter, Portfolio">
     <meta name="author" content="Muhammad Ridhan Khoirullah">
     <title>Portofolio - Muhammad Ridhan Khoirullah</title>
@@ -14,7 +14,7 @@
 </head>
 <div>
     <header>
-        <div class="paralax-bg"></div>
+        <div class="parallax-bg"></div>
         <img src="foto_ridhan.jpg" alt="Muhammad Ridhan Khoirullah" class="profile-img" loading="lazy">
         <h1><i class="fas fa-user"></i> Muhammad Ridhan Khoirullah</h1>
         <p class="typed-container">
@@ -177,15 +177,12 @@
     <footer>
         <p><i class="fas fa-envelope"></i> Contact: muhammadridhankhoirullah6@gmail.com | <i class="fas fa-phone"></i> +62 895 3444 44286</p>
     </footer>
+    
 </body>
 <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 <script src="script.js"></script>
 <script>
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js')
-            .then(reg => console.log("Service Worker Registered"))
-            .catch(err => console.log("Service Worker Failed", err));
-    }
-</script>
+    AOS.init();
+  </script>  
 </html>
